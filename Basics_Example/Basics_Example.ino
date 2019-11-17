@@ -1,16 +1,10 @@
 /****************************************************************
- * Example1_Basics.ino
- * ICM 20948 Arduino Library Demo 
- * Use the default configuration to stream 9-axis IMU data
- * Owen Lyke @ SparkFun Electronics
- * Original Creation Date: April 17 2019
- * 
- * This code is beerware; if you see me (or any other SparkFun employee) at the
- * local, and you've found our code helpful, please buy us a round!
- * 
- * Distributed as-is; no warranty is given.
+
  ***************************************************************/
 #include "ICM_20948.h"  // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
+#include <MadgwickAHRS.h>
+
+Madgwick filter;
 
 //#define USE_SPI       // Uncomment this to use SPI
 
@@ -32,7 +26,7 @@
 
 
 void setup() {
-
+  filter.begin(30);
   SERIAL_PORT.begin(115200);
   while(!SERIAL_PORT){};
 
@@ -64,12 +58,52 @@ void setup() {
 }
 
 void loop() {
-
+  float ax, ay, az;
+  float gx, gy, gz;
+  float roll, pitch, heading;
+  
   if( myICM.dataReady() ){
     myICM.getAGMT();                // The values are only updated when you call 'getAGMT'
-//    printRawAGMT( myICM.agmt );     // Uncomment this to see the raw values, taken directly from the agmt structure
-    printScaledAGMT( myICM.agmt);   // This function takes into account the sclae settings from when the measurement was made to calculate the values with units
-    delay(300);
+//  printRawAGMT( myICM.agmt );     // Uncomment this to see the raw values, taken directly from the agmt structure
+//  printScaledAGMT( myICM.agmt);   // This function takes into account the scale settings from when the measurement was made to calculate the values with units
+
+    //raw data in gravity and degrees/second
+    ax = myICM.accX()*0.001;
+    ay = myICM.accY()*0.001;
+    az = myICM.accZ()*0.001;
+    gx = myICM.gyrX();
+    gy = myICM.gyrX();
+    gz = myICM.gyrX();
+    SERIAL_PORT.print("RAW. Acc (g) [ ");
+    printFormattedFloat(ax, 5, 2 );
+    SERIAL_PORT.print(", ");
+    printFormattedFloat(ay, 5, 2 );
+    SERIAL_PORT.print(", ");
+    printFormattedFloat(az, 5, 2 );
+    SERIAL_PORT.print(" ], Gyr (DPS) [ ");
+    printFormattedFloat(ax, 5, 2 );
+    SERIAL_PORT.print(", ");
+    printFormattedFloat(ay, 5, 2 );
+    SERIAL_PORT.print(", ");
+    printFormattedFloat(az, 5, 2 );
+    SERIAL_PORT.print(" ]");
+    SERIAL_PORT.println();
+   
+    // update the filter, which computes orientation
+    filter.updateIMU(gx, gy, gz, ax, ay, az);
+
+    // print the heading, pitch and roll
+    roll = filter.getRoll();
+    pitch = filter.getPitch();
+    heading = filter.getYaw();
+    Serial.print("Orientation: ");
+    Serial.print(heading);
+    Serial.print(" ");
+    Serial.print(pitch);
+    Serial.print(" ");
+    Serial.println(roll);
+
+    delay(30);
     //originally 30
   }else{
     Serial.println("Waiting for data");
