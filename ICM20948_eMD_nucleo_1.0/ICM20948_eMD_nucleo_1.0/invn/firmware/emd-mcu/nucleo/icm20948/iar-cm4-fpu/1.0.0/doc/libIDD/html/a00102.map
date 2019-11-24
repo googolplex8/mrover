@@ -1,5 +1,0 @@
-<map id="Device" name="Device">
-<area shape="rect" id="node1" href="$a00104.html" title="Concrete implementation of the &#39;Device&#39; interface for Icm20648 devices. " alt="" coords="125,5,240,35"/>
-<area shape="rect" id="node2" href="$a00103.html" title="emd wrapper implementation for device interface " alt="" coords="115,59,251,88"/>
-<area shape="rect" id="node3" href="$a00105.html" title="Concrete implementation of the &#39;Device&#39; interface for Icm20948 devices. " alt="" coords="125,112,240,141"/>
-</map>

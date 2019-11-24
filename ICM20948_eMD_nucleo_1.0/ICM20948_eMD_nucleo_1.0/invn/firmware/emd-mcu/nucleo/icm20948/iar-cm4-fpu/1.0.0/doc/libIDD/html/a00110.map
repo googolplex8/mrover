@@ -1,6 +1,0 @@
-<map id="Icm20648 driver" name="Icm20648 driver">
-<area shape="rect" id="node1" href="$a00119.html" title="Interface for low&#45;level serial (I2C/SPI) access. " alt="" coords="289,5,428,35"/>
-<area shape="rect" id="node2" href="$a00134.html" title="Low&#45;level drivers for InvenSense devices. " alt="" coords="5,59,67,88"/>
-<area shape="rect" id="node3" href="$a00120.html" title="Low&#45;level function to setup an Icm20648 device. " alt="" coords="285,59,432,88"/>
-<area shape="rect" id="node5" href="$a00121.html" title="Low&#45;level ICM20648 register access. " alt="" coords="276,112,441,141"/>
-</map>
