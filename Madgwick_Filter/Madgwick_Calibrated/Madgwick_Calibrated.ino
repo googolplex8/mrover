@@ -22,8 +22,9 @@ float mag_field_strength        = 38.27F;
 // Offsets applied to compensate for gyro zero-drift error for x/y/z
 float gyro_zero_offsets[3]      = { 0.0F, 0.0F, 0.0F };
 
-
+//
 //#define USE_SPI       // Uncomment this to use SPI
+//
 
 #define SERIAL_PORT Serial
 
@@ -104,14 +105,15 @@ if( myICM.dataReady() ){
   // and example of working with quaternion data.
   float roll = filter.getRoll();
   float pitch = filter.getPitch();
-  float heading = filter.getYaw();
+  float yaw = filter.getYaw();
   Serial.print(millis());
-  Serial.print(" - Orientation: ");
-  Serial.print(heading);
+  //Serial.print(" - Orientation: ");
+  Serial.print(" ");
+  Serial.print(roll);
   Serial.print(" ");
   Serial.print(pitch);
   Serial.print(" ");
-  Serial.println(roll);
+  Serial.println(yaw);
 
   delay(10);
 }else{
