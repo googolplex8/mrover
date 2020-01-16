@@ -78,7 +78,8 @@ void loop() {
     mx = myICM.magX();
     my = myICM.magY();
     mz = myICM.magZ();
-    
+
+    /*
     SERIAL_PORT.print("RAW. Acc (g) [ ");
     printFormattedFloat(ax, 5, 2 );
     SERIAL_PORT.print(", ");
@@ -93,7 +94,28 @@ void loop() {
     printFormattedFloat(az, 5, 2 );
     SERIAL_PORT.print(" ]");
     SERIAL_PORT.println();
-   
+    */
+    Serial.print(millis());
+    Serial.print(" ");
+    Serial.print(ax);
+    Serial.print(" ");
+    Serial.print(ay);
+    Serial.print(" ");
+    Serial.print(az);
+    Serial.print(" ");
+    Serial.print(gx);
+    Serial.print(" ");
+    Serial.print(gy);
+    Serial.print(" ");
+    Serial.print(gz);
+    Serial.print(" ");
+    Serial.print(mx);
+    Serial.print(" ");
+    Serial.print(my);
+    Serial.print(" ");
+    Serial.print(mz);
+    SERIAL_PORT.println();
+    
     // update the filter, which computes orientation
     //filter.updateIMU(gx, gy, gz, ax, ay, az);
     filter.update(gx, gy, gz, ax, ay, az, mx, my, mz);
@@ -102,13 +124,17 @@ void loop() {
     roll = filter.getRoll();
     pitch = filter.getPitch();
     heading = filter.getYaw();
+
+    /*
+    Serial.print(millis());
+    Serial.print(" ");
     Serial.print("Orientation: ");
     Serial.print(heading);
     Serial.print(" ");
     Serial.print(pitch);
     Serial.print(" ");
     Serial.println(roll);
-
+    */
     delay(30);
     //originally 30
   }else{

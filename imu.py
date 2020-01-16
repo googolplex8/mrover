@@ -36,11 +36,12 @@ def main():
 
 	ser.close()
 
+	'''
 	time = time[4:-5]
 	roll = moving_average(roll)
 	pitch = moving_average(pitch)
 	yaw = moving_average(yaw)
-
+	'''
 	plt.plot(time, roll, label = "roll")
 	plt.plot(time, pitch, label = "pitch")
 	plt.plot(time, yaw, label = "yaw")
