@@ -15,7 +15,7 @@ def main():
 	ser.close()
 	ser.open()
 
-	while(count < 10000):
+	while(count < 1000):
 		input = ser.readline().decode("utf-8").split(" ")
 		print(input)
 		if(not is_float(input[0])):
@@ -36,17 +36,18 @@ def main():
 
 	ser.close()
 
-	'''
+	
 	time = time[4:-5]
 	roll = moving_average(roll)
 	pitch = moving_average(pitch)
 	yaw = moving_average(yaw)
-	'''
+	
 	plt.plot(time, roll, label = "roll")
 	plt.plot(time, pitch, label = "pitch")
 	plt.plot(time, yaw, label = "yaw")
 	plt.title("Roll, Pitch, and Yaw over Time")
 	plt.xlabel("time (ms)")
+	plt.ylabel("degrees")
 	plt.legend()
 	plt.show()
 

@@ -1,0 +1,116 @@
+filtered_01:  
+    date: 1/12/2020
+    at rest: yes
+    calibration set: 1
+    window size: 10
+    data samples: unknown
+filtered_02:
+    date: 1/15/2020
+    at rest: yes
+    calibration set: 1
+    window size: unknown
+    data samples: unknown
+filtered_03:
+    date: 1/19/2020
+    at rest: yes
+    calibration set: 1
+    window size: none
+    data samples: 10000
+filtered_04:
+    date: 1/19/2020
+    at rest: yes
+    calibration set: 1
+    window size: none
+    data samples: 10000
+filtered_05:
+    date: 1/19/2020
+    at rest: yes
+    calibration set: 1
+    window size: 10
+    data samples: 2000
+filtered_06:
+    date: 1/19/2020
+    at rest: no
+    calibration set: 1
+    window size: 10
+    data samples: 1000
+filtered_07:
+    date: 1/19/2020
+    at rest: no
+    calibration set: 1
+    window size: 10
+    data samples: 1000
+filtered_08:
+    date: 1/19/2020
+    at rest: no
+    calibration set: 1
+    window size: 10
+    data samples: 1000
+filtered_09:
+    date: 1/19/2020
+    at rest: yes
+    calibration set: 1
+    window size: 10
+    data samples: 1000
+filtered_10:
+    date: 1/19/2020
+    at rest: no
+    calibration set: 1
+    window size: 10
+    data samples: 1000
+filtered_11:
+    date: 1/19/2020
+    at rest: no
+    calibration set: 1
+    window size: 10
+    data samples: 1000
+
+
+unfiltered_01:
+    date: 1/15/2020
+    at rest: yes
+    calibration set: na
+    window size: none
+    data samples: 5000
+unfiltered_02:
+    date: 1/15/2020
+    at rest: yes
+    calibration set: na
+    window size: none
+    data samples: 5000
+unfiltered_03:
+    date: 1/19/2020
+    at rest: yes
+    calibration set: na
+    window size: none
+    data samples: 10000
+unfiltered_04:
+    date: 1/19/2020
+    at rest: yes
+    calibration set: na
+    window size: none
+    data samples: 10000
+unfiltered_05:
+    date: 1/19/2020
+    at rest: no
+    calibration set: na
+    window size: none
+    data samples: 1000
+unfiltered_06:
+    date: 1/19/2020
+    at rest: no
+    calibration set: na
+    window size: none
+    data samples: 1000
+
+Notes:
+1. Unfiltered yaw is unreadable
+2. Movement is shove forward, wait 3 seconds, shove back, wait 3 seconds, repeat
+
+Calibration Set 1:
+    float mag_offsets[3]            = { -15.25F, 20.09F, -5.56F };
+    float mag_softiron_matrix[3][3] = { {  0.954,  0.018,  0.001 },
+                                    {  0.018,  1.066, -0.010 },
+                                    {  0.001,  -0.010,  0.972 } };
+    float mag_field_strength        = 38.27F;
+    float gyro_zero_offsets[3]      = { 0.0F, 0.0F, 0.0F };
