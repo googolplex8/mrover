@@ -10,14 +10,14 @@ Madgwick filter;
 // These values must be determined for each baord/environment.
 
 // Offsets applied to raw x/y/z mag values
-float mag_offsets[3]            = { -15.25F, 20.09F, -5.56F };
+float mag_offsets[3]            = { 0.20F, 11.15F, -12.12F };
 
 // Soft iron error compensation matrix
-float mag_softiron_matrix[3][3] = { {  0.954,  0.018,  0.001 },
-                                    {  0.018,  1.066, -0.010 },
-                                    {  0.001,  -0.010,  0.972 } };
+float mag_softiron_matrix[3][3] = { {  0.889,  0.000,  0.000 },
+                                    {  0.000,  1.226, 0.000 },
+                                    {  0.000,  0.000,  0.917 } };
 
-float mag_field_strength        = 38.27F;
+float mag_field_strength        = 33.83F;
 
 // Offsets applied to compensate for gyro zero-drift error for x/y/z
 float gyro_zero_offsets[3]      = { 0.0F, 0.0F, 0.0F };
@@ -106,6 +106,10 @@ if( myICM.dataReady() ){
   float roll = filter.getRoll();
   float pitch = filter.getPitch();
   float yaw = filter.getYaw();
+  roll *= 180.0f / PI;
+  pitch *= 180.0f / PI;
+  yaw *= 180.0f / PI;
+  //yaw += 7; //magnetic declination in GGBrown is 7 degrees and 0 minutes
   Serial.print(millis());
   //Serial.print(" - Orientation: ");
   Serial.print(" ");

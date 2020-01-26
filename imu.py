@@ -15,7 +15,7 @@ def main():
 	ser.close()
 	ser.open()
 
-	while(count < 1000):
+	while(count < 2000):
 		input = ser.readline().decode("utf-8").split(" ")
 		print(input)
 		if(not is_float(input[0])):
@@ -24,7 +24,7 @@ def main():
 		r = float(input [1])
 		p = float(input[2])
 		y = input[3]
-		y = y[:-4]
+		y = y[:-2]
 		y = float(y)
 
 		time = np.append(time, np.array([t]))
