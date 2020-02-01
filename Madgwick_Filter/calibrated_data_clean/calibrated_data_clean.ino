@@ -1,7 +1,7 @@
 /****************************************************************
 
  ***************************************************************/
-#include "ICM_20948.h"  // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
+#include "ICM_20948.h"
 #include <MadgwickAHRS.h>
 
 Madgwick filter;
@@ -64,10 +64,10 @@ void setup() {
     myICM.begin( WIRE_PORT, AD0_VAL );
 #endif
 
-    SERIAL_PORT.print( F("Initialization of the sensor returned: ") );
-    SERIAL_PORT.println( myICM.statusString() );
+    //SERIAL_PORT.print( F("Initialization of the sensor returned: ") );
+    //SERIAL_PORT.println( myICM.statusString() );
     if( myICM.status != ICM_20948_Stat_Ok ){
-      SERIAL_PORT.println( "Trying again..." );
+      //SERIAL_PORT.println( "Trying again..." );
       delay(500);
     }else{
       initialized = true;
@@ -137,7 +137,7 @@ if( myICM.dataReady() ){
 
   delay(10);
 }else{
-    Serial.println("Waiting for data");
+    //Serial.println("Waiting for data");
     delay(500);
   }
 }

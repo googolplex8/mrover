@@ -1,5 +1,6 @@
 import serial
 import matplotlib.pyplot as plt
+
 import numpy as np
 
 def main():
@@ -17,7 +18,7 @@ def main():
 
     while(count < 1000):
         input = ser.readline().decode("utf-8").split(" ")
-        print(input)
+        #print(input)
         if(not is_float(input[0])):
             continue
         t = float(input[0])
@@ -32,10 +33,11 @@ def main():
         pitch = np.append(pitch, np.array([p]))
         yaw = np.append(yaw, np.array([y]))
 
+
         count +=1
-        plt.plot(time, roll, label='roll')
-        plt.plot(time, pitch, label = "pitch")
-        plt.plot(time, yaw, label='yaw')
+        plt.plot(time[-3:count-1], roll[-3:count-1], label='roll')
+        #plt.plot(time[-50:count:1], pitch[-50:count:1], label = "pitch")
+        #plt.plot(time[-50:count:1], yaw[-50:count:1], label='yaw')
         plt.pause(0.05)
 
     ser.close()

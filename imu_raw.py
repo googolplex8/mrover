@@ -16,7 +16,7 @@ def main():
     ser.close()
     ser.open()
 
-    while(count < 1000):
+    while(count < 500):
         input = ser.readline().decode("utf-8").split(" ")
         print(input)
         
